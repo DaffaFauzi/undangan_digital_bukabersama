@@ -24,7 +24,7 @@ function FlipDigit({ label, value }: FlipDigitProps) {
             animate={{ y: "0%", opacity: 1 }}
             exit={{ y: "-40%", opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="absolute font-[var(--font-playfair)] text-3xl font-semibold tracking-widest text-gold sm:text-4xl"
+            className="absolute inset-0 flex items-center justify-center font-[var(--font-playfair)] text-3xl font-semibold tracking-widest text-gold sm:text-4xl"
           >
             {padded}
           </motion.span>
