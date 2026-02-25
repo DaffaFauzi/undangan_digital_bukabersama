@@ -130,7 +130,7 @@ export function GalleryCinematicSection() {
                       className="h-full w-full transform object-cover opacity-90 transition duration-700 group-hover:scale-[1.06] group-hover:opacity-100"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/10 to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-100" />
-                    <div className="pointer-events-none absolute inset-x-3 bottom-3 rounded-2xl border border-gold/20 bg-navy-light/50 px-3 py-2 text-left text-xs text-white backdrop-blur-sm">
+                    <div className="pointer-events-none absolute inset-x-3 bottom-3 rounded-2xl border border-gold/20 bg-navy-light/80 px-3 py-2 text-left text-xs text-white backdrop-blur-none sm:bg-navy-light/50 sm:backdrop-blur-sm">
                       <p className="truncate font-medium">{item.title}</p>
                       <p className="text-[10px] uppercase tracking-[0.22em] text-light-gold/60">
                         Klik untuk tampilan sinematik penuh

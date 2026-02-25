@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { CalendarDays, Clock3, MapPin, Phone, Shirt } from "lucide-react";
 import { useCountdown } from "@/hooks/useCountdown";
 import { Badge } from "@/components/ui/badge";
@@ -15,17 +15,20 @@ function FlipDigit({ label, value }: FlipDigitProps) {
   const padded = value.toString().padStart(2, "0");
 
   return (
-    <div className="flex flex-col items-center gap-2 w-full">
-      <div className="flip-digit glass-soft relative flex w-full justify-center rounded-2xl border border-gold/20 bg-navy-light/50 px-2 py-3 text-center shadow-floating sm:px-4 sm:py-4">
-        <motion.span
-          key={padded}
-          initial={{ rotateX: 90, opacity: 0 }}
-          animate={{ rotateX: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: [0.22, 0.7, 0.4, 1] }}
-          className="font-[var(--font-playfair)] text-3xl font-semibold tracking-widest text-gold sm:text-4xl"
-        >
-          {padded}
-        </motion.span>
+    <div className="flex w-full flex-col items-center gap-2">
+      <div className="glass-soft relative flex h-16 w-full items-center justify-center overflow-hidden rounded-2xl border border-gold/20 bg-navy-light/50 shadow-floating sm:h-20">
+        <AnimatePresence mode="popLayout">
+          <motion.span
+            key={padded}
+            initial={{ y: "40%", opacity: 0 }}
+            animate={{ y: "0%", opacity: 1 }}
+            exit={{ y: "-40%", opacity: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="absolute font-[var(--font-playfair)] text-3xl font-semibold tracking-widest text-gold sm:text-4xl"
+          >
+            {padded}
+          </motion.span>
+        </AnimatePresence>
         <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-transparent" />
       </div>
       <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-light-gold/60">

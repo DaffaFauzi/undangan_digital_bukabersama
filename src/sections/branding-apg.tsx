@@ -109,13 +109,13 @@ export function BrandingAPGSection() {
                 </ul>
               </div>
               
-              <div className="pt-4 flex flex-wrap gap-3">
+              <div className="pt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   asChild
                   variant="outline"
                   rounded="full"
                   size="sm"
-                  className="gap-2 border-gold/30 text-light-gold hover:border-gold hover:bg-gold/10 hover:text-white"
+                  className="w-full gap-2 border-gold/30 text-light-gold hover:border-gold hover:bg-gold/10 hover:text-white sm:w-auto"
                 >
                   <a href="https://apg.co.id/" target="_blank" rel="noreferrer">
                     <Globe2 className="h-4 w-4" />
@@ -124,10 +124,10 @@ export function BrandingAPGSection() {
                 </Button>
                 <Button
                   asChild
-                  variant="ghost"
+                  variant="outline"
                   rounded="full"
                   size="sm"
-                  className="gap-2 text-light-gold/80 hover:bg-gold/10 hover:text-white"
+                  className="w-full gap-2 border-gold/30 text-light-gold hover:border-gold hover:bg-gold/10 hover:text-white sm:w-auto"
                 >
                   <a href="https://www.instagram.com/ardanaperkasagroup?igsh=Y3FnNW91MjIxMzE4" target="_blank" rel="noreferrer">
                     <Instagram className="h-4 w-4" />
@@ -136,10 +136,10 @@ export function BrandingAPGSection() {
                 </Button>
                 <Button
                   asChild
-                  variant="ghost"
+                  variant="outline"
                   rounded="full"
                   size="sm"
-                  className="gap-2 text-light-gold/80 hover:bg-gold/10 hover:text-white"
+                  className="w-full gap-2 border-gold/30 text-light-gold hover:border-gold hover:bg-gold/10 hover:text-white sm:w-auto"
                 >
                   <a href="https://www.linkedin.com/in/ardana-perkasa-group-a3aa78390/" target="_blank" rel="noreferrer">
                     <Linkedin className="h-4 w-4" />

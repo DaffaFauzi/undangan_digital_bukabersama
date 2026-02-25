@@ -3,7 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { MusicControl } from "@/components/music-control";
 import { RamadanDecorations } from "@/components/ramadan-decorations";
 
@@ -41,14 +40,11 @@ export function LayoutShell({ children }: Props) {
             </span>
           </div>
         </div>
-        <div className="pointer-events-auto">
-          <ThemeToggle />
-        </div>
       </div>
 
       <main className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-28 sm:px-6 md:pb-32 md:pt-32">
         <div className="ramadan-border mb-10 h-px w-full opacity-70" />
-        <div className="invitation-surface rounded-[32px] border border-white/10 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.85)] backdrop-blur-2xl sm:p-8">
+        <div className="invitation-surface rounded-[32px] border border-white/10 p-6 shadow-xl backdrop-blur-md sm:shadow-[0_40px_120px_rgba(0,0,0,0.85)] sm:backdrop-blur-2xl sm:p-8">
           {children}
         </div>
         <div className="ramadan-border mt-10 h-px w-full opacity-70" />

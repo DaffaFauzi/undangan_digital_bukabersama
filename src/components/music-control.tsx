@@ -35,7 +35,8 @@ export function MusicControl() {
     if (!audio) return;
 
     if (isPlaying) {
-      if (audio.currentTime < 0.5) {
+      // Skip to 20s if starting from beginning
+      if (audio.currentTime < 20) {
         audio.currentTime = 20;
       }
       audio
