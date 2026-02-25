@@ -1,101 +1,94 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import { OpeningGate } from "@/sections/opening-gate";
+import { HeroCountdownSection } from "@/sections/hero-countdown";
+import { TentangAcaraSection } from "@/sections/tentang-acara";
+import { GalleryCinematicSection } from "@/sections/gallery-cinematic";
+import { PesanKesanSection } from "@/sections/pesan-kesan";
+import { LokasiSection } from "@/sections/lokasi";
+import { BrandingAPGSection } from "@/sections/branding-apg";
+import { RSVPSection } from "@/sections/rsvp";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [opened, setOpened] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  return (
+    <>
+      {!opened && <OpeningGate onOpened={() => setOpened(true)} />}
+      
+      <div className={`transition-opacity duration-1000 ${opened ? "opacity-100" : "opacity-0 h-0 overflow-hidden"}`}>
+        <HeroCountdownSection />
+        <DividerKaligrafi text="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ" />
+        <TentangAcaraSection />
+        <DividerKaligrafi text="رَمَضَان مُبَارَك" />
+        <GalleryCinematicSection />
+        <DividerKaligrafi text="السَّلَامُ عَلَيْكُمْ" />
+        <PesanKesanSection />
+        <DividerKaligrafi text="تَقَبَّلَ اللّٰهُ مِنَّا وَمِنْكُمْ" />
+        <LokasiSection />
+        <DividerKaligrafi text="اللَّهُمَّ بَارِكْ لَنَا فِي رَمَضَان" />
+        <BrandingAPGSection />
+        <DividerKaligrafi text="اللَّهُمَّ لَكَ صُمْتُ" />
+        <RSVPSection />
+        <DividerKaligrafi text="رَمَضَان كَرِيم" />
+        <section className="section-pad border-t border-white/10">
+          <div className="mx-auto max-w-3xl space-y-8 text-center text-slate-100">
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-200/90">
+                  Renungan Ramadhan
+                </p>
+                <p className="mb-2 font-serif text-2xl leading-relaxed text-amber-100 sm:text-3xl" dir="rtl" lang="ar">
+                  يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُواْ كُتِبَ عَلَيْكُمُ ٱلصِّيَامُ كَمَا كُتِبَ عَلَى ٱلَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ
+                </p>
+                <p className="text-base italic text-amber-100 sm:text-lg">
+                  &quot;Wahai orang-orang yang beriman! Diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang-orang sebelum kamu agar kamu bertakwa.&quot;
+                </p>
+                <p className="text-xs text-amber-100/80">(QS. Al-Baqarah: 183)</p>
+              </div>
+              <div className="space-y-3">
+                <p className="text-base italic text-amber-100 sm:text-lg">
+                  &quot;Bagi orang yang berpuasa ada dua kebahagiaan: kebahagiaan ketika berbuka puasa dan kebahagiaan ketika bertemu dengan Tuhannya.&quot;
+                </p>
+                <p className="text-xs text-amber-100/80">(HR. Bukhari dan Muslim)</p>
+              </div>
+            </div>
+            <div className="glass-panel inline-block rounded-3xl px-6 py-5 text-sm text-slate-100">
+              <p className="text-balance">
+                Atas perhatian, doa, dan kehadiran Bapak/Ibu/Saudara/i, kami
+                mengucapkan terima kasih. Semoga kebersamaan ini membawa
+                keberkahan dan mempererat silaturahmi di bulan yang suci ini.
+              </p>
+              <p className="mt-4 text-xs uppercase tracking-[0.28em] text-amber-200/90">
+                Manajemen dan Keluarga Besar Ardana Perkasa Group
+              </p>
+            </div>
+          </div>
+        </section>
+        <footer className="section-pad border-t border-white/10 text-center text-sm text-amber-200/90">
+          <p className="mx-auto max-w-2xl italic">
+            Semoga kebersamaan ini membawa keberkahan dan mempererat silaturahmi
+            di bulan yang suci ini.
+          </p>
+        </footer>
+      </div>
+    </>
+  );
+}
+
+type DividerKaligrafiProps = {
+  text: string;
+};
+
+function DividerKaligrafi({ text }: DividerKaligrafiProps) {
+  return (
+    <div className="mx-auto -mt-4 mb-2 flex max-w-4xl items-center justify-center px-6">
+      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
+      <div className="mx-4 rounded-full border border-amber-300/70 bg-amber-50/5 px-4 py-1 text-[11px] font-semibold tracking-[0.28em] text-amber-100/90">
+        {text}
+      </div>
+      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
     </div>
   );
 }
