@@ -15,8 +15,8 @@ function FlipDigit({ label, value }: FlipDigitProps) {
   const padded = value.toString().padStart(2, "0");
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <div className="flip-digit glass-soft relative flex min-w-[68px] justify-center rounded-2xl border border-gold/20 bg-navy-light/50 px-3 py-3 text-center shadow-floating sm:min-w-[80px] sm:px-4 sm:py-4">
+    <div className="flex flex-col items-center gap-2 w-full">
+      <div className="flip-digit glass-soft relative flex w-full justify-center rounded-2xl border border-gold/20 bg-navy-light/50 px-2 py-3 text-center shadow-floating sm:px-4 sm:py-4">
         <motion.span
           key={padded}
           initial={{ rotateX: 90, opacity: 0 }}
@@ -144,7 +144,7 @@ export function HeroCountdownSection() {
             <span>Countdown</span>
             <span>Buka Puasa</span>
           </div>
-          <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+          <div className="grid w-full grid-cols-4 gap-2 sm:gap-6">
             <FlipDigit label="Hari" value={countdown.days} />
             <FlipDigit label="Jam" value={countdown.hours} />
             <FlipDigit label="Menit" value={countdown.minutes} />

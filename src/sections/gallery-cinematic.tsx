@@ -84,7 +84,7 @@ export function GalleryCinematicSection() {
         className="max-w-3xl space-y-3"
       >
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-          Gallery Cinematic
+          Gallery Ardana Perkasa Group
         </p>
       </motion.div>
 

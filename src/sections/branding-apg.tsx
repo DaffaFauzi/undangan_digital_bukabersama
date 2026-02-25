@@ -134,6 +134,18 @@ export function BrandingAPGSection() {
                     Instagram
                   </a>
                 </Button>
+                <Button
+                  asChild
+                  variant="ghost"
+                  rounded="full"
+                  size="sm"
+                  className="gap-2 text-light-gold/80 hover:bg-gold/10 hover:text-white"
+                >
+                  <a href="https://www.linkedin.com/in/ardana-perkasa-group-a3aa78390/" target="_blank" rel="noreferrer">
+                    <Linkedin className="h-4 w-4" />
+                    LinkedIn
+                  </a>
+                </Button>
               </div>
             </CardContent>
           </Card>
