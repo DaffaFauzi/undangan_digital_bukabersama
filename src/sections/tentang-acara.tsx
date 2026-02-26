@@ -51,15 +51,25 @@ export function TentangAcaraSection() {
         className="max-w-3xl space-y-4"
       >
         <Badge variant="outline" className="border-gold/30 text-gold hover:bg-gold/10">Tentang Acara</Badge>
-        <h2 className="font-[var(--font-playfair)] text-2xl leading-tight text-white sm:text-3xl">
-          Merajut Sinergi dan Silaturahmi Bersama Mitra & Sahabat.
+        <h2 className="font-[var(--font-playfair)] text-2xl font-bold leading-tight text-white sm:text-3xl">
+          Harmony of Ramadhan
         </h2>
-        <p className="text-sm text-light-gold/80 sm:text-base">
-          Buka Puasa Bersama Ardana Perkasa Group adalah momen istimewa untuk
-          mempererat tali persaudaraan dengan para partner dan sahabat perusahaan.
-          Sebuah wujud apresiasi kami atas kolaborasi yang terjalin, dalam suasana
-          Ramadan yang penuh berkah.
+        <p className="font-serif text-lg italic text-gold/90 sm:text-xl">
+          Dalam Kebersamaan, Kita Menemukan Keberkahan
         </p>
+        <div className="space-y-4 text-sm text-light-gold/80 sm:text-base">
+          <p>
+            Buka Puasa Bersama ini menjadi momen istimewa untuk menyatukan hati
+            dalam suasana Ramadhan yang penuh makna. Melalui kebersamaan yang
+            hangat dan penuh rasa syukur, kita mempererat silaturahmi, memperkuat
+            hubungan, serta menumbuhkan semangat kolaborasi yang harmonis.
+          </p>
+          <p>
+            Dalam satu waktu berbuka dan doa yang dipanjatkan bersama, kita tidak
+            hanya berbagi hidangan, tetapi juga berbagi harapan, kebaikan, dan
+            keberkahan yang membawa kebaikan bagi kita semua.
+          </p>
+        </div>
       </motion.div>
 
       <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-start">
