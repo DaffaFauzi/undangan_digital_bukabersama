@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { useAudioStore } from "@/store/useAudioStore";
 import { Lantern3D, ArtDecoCorner3D, FloatingParticle } from "@/components/decoration-elements";
@@ -36,7 +37,7 @@ export function OpeningGate({ onOpened }: Props) {
 
   if (!mounted) return null;
 
-  return (
+  return createPortal(
     <motion.div 
       initial={{ opacity: 1 }}
       animate={{ opacity: visible ? 1 : 0 }}
@@ -213,6 +214,7 @@ export function OpeningGate({ onOpened }: Props) {
                 </div>
             </div>
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body
   );
 }
