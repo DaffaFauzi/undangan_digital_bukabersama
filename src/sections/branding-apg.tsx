@@ -125,9 +125,6 @@ export function BrandingAPGSection() {
                   <p className="text-[11px] sm:text-xs font-medium text-gold/80 uppercase tracking-wider">
                     {company.name}
                   </p>
-                  <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-navy/70 leading-relaxed">
-                    {company.desc}
-                  </p>
                 </div>
               </div>
             </div>
