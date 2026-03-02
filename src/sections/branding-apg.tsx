@@ -60,6 +60,12 @@ const subsidiaries = [
     icon: HardHat,
     logoSrc: "/logos/lps.png",
   },
+      {
+    name: "PT. Caraka Mulia",
+    alias: "Caraka",
+    icon: HardHat,
+    logoSrc: "/logos/caraka.png",
+  },
 ];
 
 export function BrandingAPGSection() {

@@ -13,9 +13,9 @@ const rundown = [
   },
   {
     time: "17.25",
-    label: "Sambutan Direksi & Ketua Panitia",
+    label: "Sambutan & Pemotongan Tumpeng",
     icon: Mic,
-    detail: "Sambutan hangat dari Direksi dan Ketua Panitia Pelaksana.",
+    detail: " Sambutan hangat dari Direksi dan Ketua Panitia Pelaksana.",
   },
   {
     time: "17.50",
