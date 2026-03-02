@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { OpeningGate } from "@/sections/opening-gate";
 import { HeroCountdownSection } from "@/sections/hero-countdown";
 import { TentangAcaraSection } from "@/sections/tentang-acara";
