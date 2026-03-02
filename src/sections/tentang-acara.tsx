@@ -64,9 +64,9 @@ export function TentangAcaraSection() {
             memperkuat sinergi, dan berbagi kebahagiaan dalam satu keluarga besar Ardana Perkasa Group.
           </p>
           <p>
-            Momen istimewa ini juga menjadi wujud syukur atas bertambahnya usia 
-            <span className="text-gold font-medium"> PT. Dwi Kusuma Perkasa</span>, 
-            semoga senantiasa tumbuh dan memberikan manfaat bagi orang banyak.
+            Momen istimewa ini juga menjadi wujud syukur atas pencapaian seluruh unit bisnis di bawah naungan 
+            <span className="text-gold font-medium"> Ardana Perkasa Group</span>, 
+            sekaligus memperingati Milad ke-4 PT. Dwi Kusuma Perkasa.
           </p>
           <p className="text-xs text-navy/60 italic">
             Anjuran berpakaian: Busana Muslim/Muslimah rapi & sopan.

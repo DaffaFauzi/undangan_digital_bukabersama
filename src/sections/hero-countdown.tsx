@@ -83,9 +83,12 @@ export function HeroCountdownSection() {
         <h3 className="font-[var(--font-playfair)] text-xl sm:text-3xl font-bold text-navy-dark tracking-wide mt-1">
           ARDANA PERKASA GROUP
         </h3>
+        <span className="text-[10px] sm:text-xs font-semibold text-navy/60 tracking-[0.15em] uppercase mt-1 mb-2">
+          BESERTA SELURUH ANAK PERUSAHAAN
+        </span>
 
         {/* AMPERSAND */}
-        <div className="text-3xl sm:text-4xl font-serif text-gold/80 my-2">
+        <div className="text-2xl sm:text-3xl font-serif text-gold/80 my-1">
           &
         </div>
 
