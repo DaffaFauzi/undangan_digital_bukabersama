@@ -10,24 +10,24 @@ import { X } from "lucide-react";
 
 const galleryItems = [
   {
-    src: "/gallery/foto-1.jpg",
-    title: "Gala Dinner - Kebersamaan Keluarga Besar",
+    src: "/gallery/foto-1.png",
+    title: "Momentum Kebersamaan Keluarga Besar",
   },
   {
-    src: "/gallery/foto-2.jpg",
-    title: "Momen Hangat Ardana Perkasa Group",
+    src: "/gallery/foto-2.png",
+    title: "Sinergi Harmoni Ardana Perkasa Group",
   },
   {
-    src: "/gallery/foto-3.jpg",
-    title: "Semangat & Keceriaan Tim",
+    src: "/gallery/foto-3.png",
+    title: "Kehangatan Suasana Buka Puasa",
   },
   {
-    src: "/gallery/foto-4.jpg",
-    title: "Kekompakan dalam Balutan Putih & Coklat",
+    src: "/gallery/foto-4.png",
+    title: "Keceriaan & Kekompakan Tim",
   },
   {
-    src: "/gallery/foto-5.jpg",
-    title: "Simbolis Pemotongan Tumpeng & Kue",
+    src: "/gallery/foto-5.png",
+    title: "Indahnya Berbagi Kebahagiaan",
   },
 ];
 
@@ -90,7 +90,8 @@ export function GalleryCinematicSection() {
 
       <motion.div
         initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.7, delay: 0.12 }}
       >
         <div className="glass-panel overflow-hidden rounded-3xl p-4 shadow-floating">
@@ -119,7 +120,7 @@ export function GalleryCinematicSection() {
                 <button
                   type="button"
                   onClick={() => openAt(index)}
-                  className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl border border-gold/20 bg-navy-dark/70 shadow-[0_30px_95px_rgba(0,0,0,0.85)] transition duration-500 hover:border-gold/80 hover:shadow-[0_40px_120px_rgba(0,0,0,0.95)]"
+                  className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl border border-gold/20 bg-white/70 shadow-[0_20px_60px_rgba(15,20,36,0.18)] transition duration-500 hover:border-gold/80 hover:shadow-[0_30px_85px_rgba(15,20,36,0.22)]"
                 >
                   <div className="relative aspect-[4/5] w-full overflow-hidden">
                     <Image
@@ -129,10 +130,10 @@ export function GalleryCinematicSection() {
                       sizes="(min-width: 1024px) 380px, (min-width: 768px) 280px, 80vw"
                       className="h-full w-full transform object-cover opacity-90 transition duration-700 group-hover:scale-[1.06] group-hover:opacity-100"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/10 to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-100" />
-                    <div className="pointer-events-none absolute inset-x-3 bottom-3 rounded-2xl border border-gold/20 bg-navy-light/80 px-3 py-2 text-left text-xs text-white backdrop-blur-none sm:bg-navy-light/50 sm:backdrop-blur-sm">
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/10 to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-100" />
+                    <div className="pointer-events-none absolute inset-x-3 bottom-3 rounded-2xl border border-gold/20 bg-navy/75 px-3 py-2 text-left text-xs text-white backdrop-blur-none sm:bg-navy/70 sm:backdrop-blur-sm">
                       <p className="truncate font-medium">{item.title}</p>
-                      <p className="text-[10px] uppercase tracking-[0.22em] text-light-gold/60">
+                      <p className="text-[10px] uppercase tracking-[0.22em] text-gold/80">
                         Klik untuk tampilan sinematik penuh
                       </p>
                     </div>
@@ -183,7 +184,7 @@ export function GalleryCinematicSection() {
                   />
                 </div>
                 
-                <div className="flex flex-col gap-4 border-t border-white/10 bg-navy-dark p-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col gap-4 border-t border-white/10 bg-navy p-6 sm:flex-row sm:items-center sm:justify-between">
                   <div className="space-y-1">
                     <h3 className="text-lg font-medium text-gold">
                       {galleryItems[lightbox.index].title}

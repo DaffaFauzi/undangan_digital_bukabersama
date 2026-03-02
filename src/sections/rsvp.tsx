@@ -4,27 +4,19 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, XCircle, ExternalLink } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle2, XCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const RSVP_SHEET_ENDPOINT = "/api/rsvp";
-
-const RSVP_SHEET_VIEW_URL =
-  "https://docs.google.com/spreadsheets/d/1zSURbQU_T-aQ_pc3H5v09lqNfScMd5BX5i-Z1-YWwyg/edit?hl=id&gid=441949537#gid=441949537";
 
 const RSVP_SHEET_CONFIGURED =
   !!RSVP_SHEET_ENDPOINT &&
   !RSVP_SHEET_ENDPOINT.includes("PASTE_YOUR_SCRIPT_URL_HERE");
 
-const RSVP_SHEET_VIEW_CONFIGURED =
-  !!RSVP_SHEET_VIEW_URL &&
-  !RSVP_SHEET_VIEW_URL.includes("PASTE_SHEET_ID_HERE");
-
 type RSVPChoice = "hadir" | "berhalangan" | null;
 
 export function RSVPSection() {
-  const [hadir, setHadir] = useState(0);
-  const [berhalangan, setBerhalangan] = useState(0);
   const [choice, setChoice] = useState<RSVPChoice>(null);
   const [nama, setNama] = useState("");
   const [institusi, setInstitusi] = useState("");
@@ -32,8 +24,6 @@ export function RSVPSection() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const total = hadir + berhalangan;
 
   const handleSelect = (value: RSVPChoice) => {
     setChoice(value);
@@ -75,14 +65,9 @@ export function RSVPSection() {
         if (!res.ok) throw new Error("Failed to submit");
       }
 
-      if (choice === "hadir") {
-        setHadir((value) => value + 1);
-      } else if (choice === "berhalangan") {
-        setBerhalangan((value) => value + 1);
-      }
-
       setSubmitted(true);
-    } catch {
+    } catch (err) {
+      console.error(err);
       setError("Gagal mengirim data. Silakan coba lagi nanti.");
     } finally {
       setSubmitting(false);
@@ -90,113 +75,124 @@ export function RSVPSection() {
   };
 
   return (
-    <section
-      id="rsvp"
-      className="section-pad"
-    >
+    <section id="rsvp" className="section-pad">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.65, ease: [0.22, 0.61, 0.36, 1] }}
       >
-        <Card className="rounded-3xl border border-gold/20 bg-navy-light/50 shadow-floating backdrop-blur-sm">
-          <CardHeader>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-              RSVP Kehadiran
+        <Card className="rounded-3xl border border-gold/20 bg-white/70 shadow-floating backdrop-blur-md overflow-hidden">
+          <CardHeader className="border-b border-navy/10 pb-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold mb-2">
+              Reservasi Kehadiran
             </p>
-            <CardTitle className="text-white">
-              Konfirmasi kehadiran Anda untuk Buka Bersama APG.
+            <CardTitle className="text-navy-dark">
+              Konfirmasi Kehadiran
             </CardTitle>
           </CardHeader>
-          <CardContent className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center">
-            <div className="space-y-4 text-sm text-light-gold/80">
-              <p>
-                Mohon kesediaannya untuk memberikan konfirmasi kehadiran para tamu undangan.
+          <CardContent className="pt-6">
+            <div className="space-y-6 text-sm text-navy/80">
+              <p className="leading-relaxed text-center max-w-2xl mx-auto">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu berkenan hadir untuk memberikan doa serta mempererat tali silaturahmi bersama kami.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <Button
-                  type="button"
-                  rounded="full"
-                  className="gap-2 bg-gradient-to-r from-gold via-gold-dark to-bronze text-navy-dark shadow-[0_18px_45px_rgba(212,175,55,0.4)] transition duration-300 hover:brightness-110 hover:shadow-[0_0_40px_rgba(212,175,55,0.6)]"
-                  onClick={() => handleSelect("hadir")}
-                >
-                  <CheckCircle2 className="h-4 w-4" />
-                  Saya Akan Hadir
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  rounded="full"
-                  className="gap-2 border-gold/40 text-light-gold hover:border-gold hover:bg-gold/10 hover:text-white"
-                  onClick={() => handleSelect("berhalangan")}
-                >
-                  <XCircle className="h-4 w-4 text-slate-400" />
-                  Berhalangan Hadir
-                </Button>
+              
+              <div className="space-y-3 flex flex-col items-center">
+                <p className="text-xs font-medium uppercase tracking-widest text-navy/60">Pilih Status Kehadiran:</p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <Button
+                    type="button"
+                    rounded="full"
+                    size="lg"
+                    className={`gap-2 transition-all duration-300 ${choice === 'hadir' ? 'bg-gradient-to-r from-gold via-gold-dark to-bronze text-navy-dark shadow-[0_0_20px_rgba(212,175,55,0.4)] scale-105' : 'bg-white/80 text-navy border border-gold/20 hover:border-gold/60'}`}
+                    onClick={() => handleSelect("hadir")}
+                  >
+                    <CheckCircle2 className="h-4 w-4" />
+                    Saya Akan Hadir
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    rounded="full"
+                    size="lg"
+                    className={`gap-2 transition-all duration-300 ${choice === 'berhalangan' ? 'bg-red-500/10 border-red-500/50 text-red-600 shadow-[0_0_20px_rgba(239,68,68,0.2)] scale-105' : 'bg-white/80 border-gold/20 text-navy hover:border-gold/60'}`}
+                    onClick={() => handleSelect("berhalangan")}
+                  >
+                    <XCircle className="h-4 w-4" />
+                    Berhalangan
+                  </Button>
+                </div>
               </div>
 
               {choice && (
-                <form
+                <motion.form
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  transition={{ duration: 0.4 }}
                   onSubmit={handleSubmit}
-                  className="mt-4 space-y-4 rounded-2xl border border-gold/20 bg-navy-dark/50 px-4 py-4"
+                  className="space-y-5 rounded-2xl border border-gold/10 bg-white/80 p-5 backdrop-blur-sm max-w-xl mx-auto"
                 >
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <p className="text-xs font-semibold uppercase tracking-[0.26em] text-gold">
-                      Data Kehadiran
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-navy/10 pb-3">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                      Formulir Data Diri
                     </p>
-                    <p className="text-[11px] text-light-gold/80">
-                      Status:{" "}
-                      <span className="font-medium text-gold">
-                        {choice === "hadir"
-                          ? "Saya Akan Hadir"
-                          : "Berhalangan Hadir"}
-                      </span>
-                    </p>
+                    <Badge variant="outline" className={`${choice === 'hadir' ? 'border-gold text-gold-dark bg-gold/10' : 'border-red-400 text-red-600 bg-red-500/10'}`}>
+                        {choice === "hadir" ? "Hadir" : "Berhalangan"}
+                    </Badge>
                   </div>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="space-y-1">
-                      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold/80">
+                  
+                  <div className="space-y-4">
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-medium uppercase tracking-[0.15em] text-navy/70 ml-1">
                         Nama Lengkap
-                      </p>
+                      </label>
                       <Input
                         value={nama}
                         onChange={(event) => setNama(event.target.value)}
-                        placeholder="Tuliskan nama lengkap"
-                        className="border-gold/30 bg-navy/50 text-light-gold placeholder:text-light-gold/30 focus-visible:ring-gold/50"
+                        placeholder="Masukkan nama lengkap Anda"
+                        className="h-11 border-gold/20 bg-white text-navy-dark placeholder:text-navy/40 focus-visible:ring-gold/50 rounded-xl transition-all focus:bg-white hover:border-gold/40"
                       />
                     </div>
-                    <div className="space-y-1">
-                      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold/80">
-                        Institusi
-                      </p>
-                      <Input
-                        value={institusi}
-                        onChange={(event) => setInstitusi(event.target.value)}
-                        placeholder="Perusahaan / Divisi / Unit"
-                        className="border-gold/30 bg-navy/50 text-light-gold placeholder:text-light-gold/30 focus-visible:ring-gold/50"
-                      />
-                    </div>
-                    <div className="space-y-1 sm:col-span-2">
-                      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold/80">
-                        Jabatan
-                      </p>
-                      <Input
-                        value={jabatan}
-                        onChange={(event) => setJabatan(event.target.value)}
-                        placeholder="Contoh: Manager Operasional"
-                        className="border-gold/30 bg-navy/50 text-light-gold placeholder:text-light-gold/30 focus-visible:ring-gold/50"
-                      />
+                    <div className="grid gap-4 sm:grid-cols-2">
+                        <div className="space-y-1.5">
+                          <label className="text-[11px] font-medium uppercase tracking-[0.15em] text-navy/70 ml-1">
+                            Institusi / Perusahaan
+                          </label>
+                          <Input
+                            value={institusi}
+                            onChange={(event) => setInstitusi(event.target.value)}
+                            placeholder="Asal Instansi"
+                            className="h-11 border-gold/20 bg-white text-navy-dark placeholder:text-navy/40 focus-visible:ring-gold/50 rounded-xl transition-all focus:bg-white hover:border-gold/40"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-[11px] font-medium uppercase tracking-[0.15em] text-navy/70 ml-1">
+                            Jabatan
+                          </label>
+                          <Input
+                            value={jabatan}
+                            onChange={(event) => setJabatan(event.target.value)}
+                            placeholder="Posisi / Jabatan"
+                            className="h-11 border-gold/20 bg-white text-navy-dark placeholder:text-navy/40 focus-visible:ring-gold/50 rounded-xl transition-all focus:bg-white hover:border-gold/40"
+                          />
+                        </div>
                     </div>
                   </div>
+
                   {error && (
-                    <p className="text-[11px] text-red-300">{error}</p>
+                    <div className="rounded-lg bg-red-500/10 p-3 text-xs text-red-600 border border-red-500/20">
+                        {error}
+                    </div>
                   )}
+                  
                   {submitted && !error && (
-                    <p className="text-[11px] text-emerald-300">
-                      Terima kasih, data kehadiran Anda sudah tercatat.
-                    </p>
+                    <div className="rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-700 border border-emerald-500/20 flex items-center gap-2">
+                        <CheckCircle2 className="h-4 w-4" />
+                        Terima kasih, konfirmasi kehadiran Anda telah tersimpan.
+                    </div>
                   )}
-                  <div className="flex justify-end">
+
+                  <div className="flex justify-end pt-2">
                     <Button
                       type="submit"
                       rounded="full"
@@ -206,60 +202,8 @@ export function RSVPSection() {
                       {submitting ? "Mengirim..." : "Kirim Konfirmasi"}
                     </Button>
                   </div>
-                </form>
+                </motion.form>
               )}
-            </div>
-            <div className="space-y-3 text-sm text-light-gold/80">
-              <div className="glass-soft flex items-center justify-between rounded-2xl border border-gold/30 px-4 py-3 shadow-[0_0_40px_rgba(212,175,55,0.15)] bg-navy-light/30">
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.26em] text-gold">
-                    Total Respon
-                  </p>
-                  <p className="text-xs text-light-gold/60">
-                    Simulasi lokal di browser Anda.
-                  </p>
-                </div>
-                <p className="font-[var(--font-playfair)] text-4xl font-semibold text-white">
-                  {total}
-                </p>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="glass-soft flex flex-col rounded-2xl border border-white/10 px-4 py-3 bg-navy-light/30">
-                  <p className="text-xs font-medium uppercase tracking-[0.26em] text-emerald-300">
-                    Akan Hadir
-                  </p>
-                  <p className="mt-1 font-[var(--font-playfair)] text-3xl font-semibold text-white">
-                    {hadir}
-                  </p>
-                </div>
-                <div className="glass-soft flex flex-col rounded-2xl border border-white/10 px-4 py-3 bg-navy-light/30">
-                  <p className="text-xs font-medium uppercase tracking-[0.26em] text-light-gold/60">
-                    Berhalangan
-                  </p>
-                  <p className="mt-1 font-[var(--font-playfair)] text-3xl font-semibold text-white">
-                    {berhalangan}
-                  </p>
-                </div>
-              </div>
-              <div className="pt-1 text-[10px] text-light-gold/60">
-                {RSVP_SHEET_VIEW_CONFIGURED ? (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      window.open(RSVP_SHEET_VIEW_URL, "_blank", "noopener")
-                    }
-                    className="inline-flex items-center gap-1 rounded-full border border-gold/30 bg-navy-light/50 px-3 py-1 text-[10px] font-medium text-gold hover:border-gold hover:bg-gold/10"
-                  >
-                    <ExternalLink className="h-3 w-3" />
-                    Lihat rekap RSVP
-                  </button>
-                ) : (
-                  <span>
-                    Data RSVP tersimpan otomatis ke spreadsheet internal
-                    seksi acara.
-                  </span>
-                )}
-              </div>
             </div>
           </CardContent>
         </Card>

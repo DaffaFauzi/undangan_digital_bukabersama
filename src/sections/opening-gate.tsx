@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { useAudioStore } from "@/store/useAudioStore";
-import { Lantern3D, ArtDecoCorner3D, FloatingParticle, RealisticCandle, GoldenPalmLeaf } from "@/components/decoration-elements";
+import { Lantern3D, ArtDecoCorner3D, FloatingParticle } from "@/components/decoration-elements";
 
 type Props = {
   onOpened: () => void;
@@ -42,12 +42,12 @@ export function OpeningGate({ onOpened }: Props) {
       initial={{ opacity: 1 }}
       animate={{ opacity: visible ? 1 : 0 }}
       transition={{ duration: 0.8 }}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-navy px-4 h-[100dvh] w-screen overflow-hidden"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background px-4 h-[100dvh] w-screen overflow-hidden"
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-20" 
+      <div className="absolute inset-0 z-0 opacity-10" 
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2319213A' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }}
       />
       
@@ -99,14 +99,14 @@ export function OpeningGate({ onOpened }: Props) {
       </motion.div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-navy/50 via-navy/80 to-navy" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-white/20 to-white/90" />
       
       {/* Side Vignette/Pillars (Matched to Main Invitation) */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-navy/90 to-transparent z-0 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-navy/90 to-transparent z-0 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white/90 to-transparent z-0 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white/90 to-transparent z-0 pointer-events-none" />
 
       {/* Mosque Silhouette Background */}
-      <div className="absolute bottom-0 left-0 right-0 z-0 pointer-events-none opacity-30 text-white">
+      <div className="absolute bottom-0 left-0 right-0 z-0 pointer-events-none opacity-10 text-navy-dark">
         <svg viewBox="0 0 1440 320" className="w-full h-auto" preserveAspectRatio="none">
           <path fill="currentColor" d="M0,320L0,224L60,224L60,192L80,160L100,192L100,224L180,224L180,160C180,160,200,128,240,128C280,128,300,160,300,160L300,224L360,224L360,144L380,112L400,144L400,224L480,224C480,224,520,160,600,160C680,160,720,224,720,224L780,224L780,128L800,96L820,128L820,224L960,224C960,224,1000,176,1080,176C1160,176,1200,224,1200,224L1260,224L1260,192L1280,160L1300,192L1300,224L1380,224L1380,192L1440,192L1440,320Z" />
         </svg>
@@ -123,9 +123,9 @@ export function OpeningGate({ onOpened }: Props) {
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={visible ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 1.05, y: -50 }}
         transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
-        className="relative z-10 w-full max-w-md overflow-hidden bg-navy-light/40 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.5)] border-y-2 sm:border-y-8 border-gold/60 rounded-2xl sm:rounded-none"
+        className="relative z-10 w-full max-w-md overflow-hidden bg-white/70 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-y-2 sm:border-y-8 border-gold/60 rounded-2xl sm:rounded-none"
         style={{
-            boxShadow: "0 0 0 1px rgba(212, 175, 55, 0.3), 0 20px 50px rgba(0,0,0,0.7)"
+            boxShadow: "0 0 0 1px rgba(212, 175, 55, 0.2), 0 20px 50px rgba(212, 175, 55, 0.15)"
         }}
       >
             {/* Ornamental Corners (SVG) */}
@@ -169,7 +169,7 @@ export function OpeningGate({ onOpened }: Props) {
                         <p className="text-[10px] sm:text-xs uppercase tracking-[0.4em] text-gold/80 mb-2 font-medium">
                             Undangan Resmi
                         </p>
-                        <h2 className="font-[var(--font-playfair)] text-3xl sm:text-4xl text-white bold leading-tight">
+                        <h2 className="font-[var(--font-playfair)] text-3xl sm:text-4xl text-navy-dark bold leading-tight">
                             BUKBER DAN MILAD
                         </h2>
                     </div>
@@ -177,25 +177,25 @@ export function OpeningGate({ onOpened }: Props) {
                     <div className="w-12 sm:w-16 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto opacity-70" />
 
                     <div>
-                        <p className="text-xs sm:text-sm text-white/70 italic font-serif mb-2">
+                        <p className="text-xs sm:text-sm text-navy/70 italic font-serif mb-2">
                             Keluarga Besar
                         </p>
-                        <h1 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-gold drop-shadow-md">
+                        <h1 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-gold drop-shadow-sm">
                             Ardana Perkasa Group
                         </h1>
                     </div>
 
-                    <div className="py-3 px-5 sm:py-4 sm:px-6 border border-gold/20 bg-navy/40 backdrop-blur-sm rounded-lg mx-auto inline-block">
-                        <p className="text-xs sm:text-sm font-medium text-white/90">
+                    <div className="py-3 px-5 sm:py-4 sm:px-6 border border-gold/20 bg-white/60 backdrop-blur-sm rounded-lg mx-auto inline-block">
+                        <p className="text-xs sm:text-sm font-medium text-navy-dark">
                             Jumat, 6 Maret 2026
                         </p>
-                        <p className="text-[10px] sm:text-xs text-gold/70 mt-1 uppercase tracking-widest">
+                        <p className="text-[10px] sm:text-xs text-gold/90 mt-1 uppercase tracking-widest">
                             Ramadan 1447 H
                         </p>
                     </div>
 
                     <div className="pt-6 sm:pt-8 pb-2 sm:pb-4">
-                         <p className="text-[10px] sm:text-xs text-white/60 max-w-[240px] sm:max-w-[260px] mx-auto leading-relaxed mb-5 sm:mb-6">
+                         <p className="text-[10px] sm:text-xs text-navy/60 max-w-[240px] sm:max-w-[260px] mx-auto leading-relaxed mb-5 sm:mb-6">
                             Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara ini.
                         </p>
 

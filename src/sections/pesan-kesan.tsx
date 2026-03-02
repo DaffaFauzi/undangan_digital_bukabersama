@@ -8,12 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import emailjs from "@emailjs/browser";
 import { Trash2 } from "lucide-react";
 
@@ -178,16 +173,17 @@ export function PesanKesanSection() {
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.65, ease: [0.22, 0.61, 0.36, 1] }}
       >
-        <Card className="rounded-3xl border border-gold/20 bg-navy-light/50 shadow-floating">
+        <Card className="rounded-3xl border border-gold/20 bg-white/70 shadow-floating">
           <CardHeader>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
               Pesan & Kesan
             </p>
           </CardHeader>
-          <CardContent className="space-y-4 text-sm text-light-gold/80">
+          <CardContent className="space-y-4 text-sm text-navy/80">
             <p>
               Form ini ditujukan untuk mengumpulkan pesan singkat, harapan, dan
               kesan Anda terkait acara Buka Bersama Ardana Perkasa Group Dan Milad PT. Dwi Kusuma Perkasa.
@@ -197,14 +193,14 @@ export function PesanKesanSection() {
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className="space-y-2">
-                <label className="text-xs font-medium uppercase tracking-[0.26em] text-light-gold/60">
+                <label className="text-xs font-medium uppercase tracking-[0.26em] text-navy/60">
                   Nama
                 </label>
                 <Input
                   placeholder="Nama lengkap"
                   autoComplete="name"
                   {...register("name")}
-                  className="border-gold/30 bg-navy/50 text-light-gold placeholder:text-light-gold/30 focus-visible:ring-gold/50"
+                  className="border-gold/30 bg-white/70 text-navy-dark placeholder:text-navy/40 focus-visible:ring-gold/50"
                 />
                 {errors.name && (
                   <p className="text-xs text-red-500">
@@ -213,14 +209,14 @@ export function PesanKesanSection() {
                 )}
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-medium uppercase tracking-[0.26em] text-light-gold/60">
+                <label className="text-xs font-medium uppercase tracking-[0.26em] text-navy/60">
                   Pesan
                 </label>
                 <Textarea
                   placeholder="Tulis pesan singkat atau harapan untuk acara Buka Bersama..."
                   rows={4}
                   {...register("message")}
-                  className="border-gold/30 bg-navy/50 text-light-gold placeholder:text-light-gold/30 focus-visible:ring-gold/50"
+                  className="border-gold/30 bg-white/70 text-navy-dark placeholder:text-navy/40 focus-visible:ring-gold/50"
                 />
                 {errors.message && (
                   <p className="text-xs text-red-500">
@@ -239,7 +235,7 @@ export function PesanKesanSection() {
                     ? "Mengirim..."
                     : "Kirim Pesan"}
                 </Button>
-                <p className="text-[11px] text-light-gold/60">
+                <p className="text-[11px] text-navy/60">
                   Pesan terbaru akan tampil di kartu sebelah kanan.
                 </p>
               </div>
@@ -258,7 +254,7 @@ export function PesanKesanSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
             Pesan Terbaru
           </p>
-          <p className="text-xs text-light-gold/60">
+          <p className="text-xs text-navy/60">
             {messages.length} pesan
           </p>
         </div>
@@ -274,7 +270,7 @@ export function PesanKesanSection() {
                 </div>
               ) : pagedMessages.length === 0 ? (
                 <motion.p
-                  className="text-xs text-light-gold/60"
+                  className="text-xs text-navy/60"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                 >
@@ -293,11 +289,11 @@ export function PesanKesanSection() {
                     className="glass-soft relative overflow-hidden rounded-2xl border border-gold/10 px-4 py-3 shadow-sm group"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <p className="text-sm font-semibold text-white">
+                      <p className="text-sm font-semibold text-navy-dark">
                         {item.name}
                       </p>
                       <div className="flex items-center gap-2">
-                        <p className="text-[10px] text-light-gold/60">
+                        <p className="text-[10px] text-navy/60">
                           {formatTime(item.createdAt)}
                         </p>
                         <button
@@ -309,7 +305,7 @@ export function PesanKesanSection() {
                         </button>
                       </div>
                     </div>
-                    <p className="mt-1 text-xs text-light-gold/80">
+                    <p className="mt-1 text-xs text-navy/80">
                       {item.message}
                     </p>
                   </motion.div>
@@ -318,7 +314,7 @@ export function PesanKesanSection() {
             </AnimatePresence>
           </div>
           {messages.length > PAGE_SIZE && (
-            <div className="flex items-center justify-between border-t border-gold/10 bg-navy-light/30 px-4 py-2 text-[11px] text-light-gold/60">
+            <div className="flex items-center justify-between border-t border-gold/10 bg-white/60 px-4 py-2 text-[11px] text-navy/60">
               <span>
                 Halaman {page} dari {maxPage}
               </span>

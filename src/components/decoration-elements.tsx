@@ -7,11 +7,13 @@ export const Lantern3D = ({
   delay = 0,
   duration = 3,
   scale = 1,
+  color = "gold",
 }: {
   className?: string;
   delay?: number;
   duration?: number;
   scale?: number;
+  color?: "gold" | "blue";
 }) => {
   return (
     <motion.div
@@ -40,7 +42,7 @@ export const Lantern3D = ({
       style={{ originX: 0.5, originY: 0 }}
     >
       {/* Glow Effect behind */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] rounded-full bg-gold/20 blur-2xl opacity-60 animate-pulse" />
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] rounded-full blur-2xl opacity-60 animate-pulse ${color === 'blue' ? 'bg-blue-500/30' : 'bg-gold/20'}`} />
 
       <svg 
         viewBox="0 0 100 240" 
@@ -50,10 +52,10 @@ export const Lantern3D = ({
         style={{ transform: `scale(${scale})` }}
       >
         <defs>
-          <radialGradient id="lantern-glow-3d" cx="0.5" cy="0.6" r="0.5">
-            <stop offset="0%" stopColor="#FFF7CC" stopOpacity="1" />
-            <stop offset="40%" stopColor="#FFD700" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#D4AF37" stopOpacity="0" />
+          <radialGradient id={`lantern-glow-3d-${color}`} cx="0.5" cy="0.6" r="0.5">
+            <stop offset="0%" stopColor={color === 'blue' ? "#E0F2FE" : "#FFF7CC"} stopOpacity="1" />
+            <stop offset="40%" stopColor={color === 'blue' ? "#3B82F6" : "#FFD700"} stopOpacity="0.6" />
+            <stop offset="100%" stopColor={color === 'blue' ? "#1E3A8A" : "#D4AF37"} stopOpacity="0" />
           </radialGradient>
           <linearGradient id="gold-metal-3d" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="#8A6E2F" />
@@ -77,7 +79,7 @@ export const Lantern3D = ({
         <path d="M20 80 L15 140 L25 180 L75 180 L85 140 L80 80 Z" fill="#111827" stroke="url(#gold-metal-3d)" strokeWidth="2" />
         
         {/* Glass Windows with Glow */}
-        <path d="M25 85 L20 140 L28 175 L72 175 L80 140 L75 85 Z" fill="url(#lantern-glow-3d)" className="animate-pulse" style={{ animationDuration: '4s' }} />
+        <path d="M25 85 L20 140 L28 175 L72 175 L80 140 L75 85 Z" fill={`url(#lantern-glow-3d-${color})`} className="animate-pulse" style={{ animationDuration: '4s' }} />
 
         {/* Decorative Crossbars (Lattice) */}
         <path d="M50 85 L50 175" stroke="url(#gold-metal-3d)" strokeWidth="1.5" opacity="0.8" />
@@ -247,4 +249,17 @@ export const GoldenPalmLeaf = ({ className, delay = 0, scale = 1, rotate = 0 }: 
       </g>
     </svg>
   </motion.div>
+);
+
+export const GoldenDividerLine = ({ className, reversed = false }: { className?: string; reversed?: boolean }) => (
+  <div className={`flex items-center gap-2 ${className} ${reversed ? "flex-row-reverse" : "flex-row"}`}>
+    {/* Line */}
+    <div className={`h-[1px] flex-1 bg-gradient-to-r ${reversed ? "from-amber-400/80 via-amber-500/40 to-transparent" : "from-transparent via-amber-500/40 to-amber-400/80"}`} />
+    
+    {/* Decorative End SVG */}
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={`shrink-0 ${reversed ? "rotate-180" : ""}`}>
+       <path d="M4 10 L10 4 L16 10 L10 16 Z" fill="#D4AF37" filter="drop-shadow(0 0 2px rgba(212,175,55,0.6))" />
+       <circle cx="18" cy="10" r="1.5" fill="#F5EEDC" />
+    </svg>
+  </div>
 );

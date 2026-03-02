@@ -15,7 +15,7 @@ export async function GET() {
     if (!response.ok) throw new Error("Failed to fetch messages");
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch messages" }, { status: 500 });
   }
 }

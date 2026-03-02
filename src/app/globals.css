@@ -7,47 +7,47 @@
 @import "swiper/css/pagination";
 
 :root {
-  --background: 225 39% 16%;
-  --foreground: 43 56% 94%;
-  --card: 225 30% 20%;
-  --card-foreground: 43 56% 94%;
-  --popover: 225 39% 16%;
-  --popover-foreground: 43 56% 94%;
+  --background: 40 33% 98%; /* Warm off-white #FFFEFA */
+  --foreground: 225 39% 16%;
+  --card: 40 33% 98%;
+  --card-foreground: 225 39% 16%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 225 39% 16%;
   --primary: 46 65% 52%;
   --primary-foreground: 225 39% 16%;
-  --secondary: 225 30% 25%;
-  --secondary-foreground: 43 56% 94%;
-  --muted: 225 30% 25%;
-  --muted-foreground: 215 20% 65%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 225 39% 16%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
   --accent: 46 65% 52%;
   --accent-foreground: 225 39% 16%;
-  --destructive: 0 63% 45%;
+  --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
   --border: 46 65% 52%;
-  --input: 225 30% 25%;
+  --input: 214.3 31.8% 91.4%;
   --ring: 46 65% 52%;
   --radius: 1.2rem;
 }
 
 .dark {
-  --background: 225 39% 16%;
-  --foreground: 43 56% 94%;
-  --card: 225 30% 20%;
-  --card-foreground: 43 56% 94%;
-  --popover: 225 39% 16%;
-  --popover-foreground: 43 56% 94%;
+  --background: 0 0% 100%;
+  --foreground: 225 39% 16%;
+  --card: 0 0% 100%;
+  --card-foreground: 225 39% 16%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 225 39% 16%;
   --primary: 46 65% 52%;
   --primary-foreground: 225 39% 16%;
-  --secondary: 225 30% 25%;
-  --secondary-foreground: 43 56% 94%;
-  --muted: 225 30% 25%;
-  --muted-foreground: 215 20% 65%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 225 39% 16%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
   --accent: 46 65% 52%;
   --accent-foreground: 225 39% 16%;
-  --destructive: 0 63% 45%;
+  --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
   --border: 46 65% 52%;
-  --input: 225 30% 25%;
+  --input: 214.3 31.8% 91.4%;
   --ring: 46 65% 52%;
 }
 
@@ -84,19 +84,18 @@ body {
   }
 
   .glass-panel {
-    @apply bg-navy-light/30 backdrop-blur-xl border border-gold/20 shadow-floating;
+    @apply bg-white/70 backdrop-blur-xl border border-gold/20 shadow-floating;
   }
 
   .glass-soft {
-    @apply bg-navy-light/20 backdrop-blur-lg border border-gold/10 shadow-lg;
+    @apply bg-white/60 backdrop-blur-lg border border-gold/15 shadow-lg;
   }
 
   .apg-gradient-surface {
     background:
-      radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 60%),
-      radial-gradient(circle at top left, rgba(212, 175, 55, 0.1), transparent 55%),
-      radial-gradient(circle at bottom right, rgba(25, 33, 58, 0.85), transparent 55%),
-      linear-gradient(to bottom, #19213A, #0f1424);
+      radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.1), transparent 60%),
+      radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.08), transparent 50%),
+      linear-gradient(to bottom, #ffffff, #f8f9fa);
   }
 
   .apg-dark-surface {
@@ -139,7 +138,7 @@ body {
   .night-sky-texture {
     background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.12) 1px, transparent 0);
     background-size: 26px 26px;
-    opacity: 0.25;
+    opacity: 0.18;
   }
 
   .ramadan-golden-glow {
@@ -171,8 +170,9 @@ body {
 
   .invitation-surface {
     background:
-      radial-gradient(circle at top left, rgba(244, 208, 111, 0.18), transparent 55%),
-      radial-gradient(circle at bottom right, rgba(6, 19, 28, 0.85), transparent 60%),
-      linear-gradient(to bottom, rgba(6, 19, 28, 0.98), rgba(11, 29, 42, 0.98));
+      radial-gradient(circle at 50% 0%, rgba(34, 49, 86, 0.06), transparent 55%),
+      radial-gradient(circle at top left, rgba(244, 208, 111, 0.22), transparent 55%),
+      radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.08), transparent 60%),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.92));
   }
 }

@@ -63,7 +63,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        floating: "0 15px 50px rgba(0,0,0,0.6)",
+        floating: "0 15px 50px rgba(0,0,0,0.15)",
       },
       backgroundImage: {
         "apg-gradient":

@@ -1,10 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { CalendarDays, Clock3, MapPin, Phone, Shirt } from "lucide-react";
 import { useCountdown } from "@/hooks/useCountdown";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 type FlipDigitProps = {
   label: string;
@@ -15,23 +13,22 @@ function FlipDigit({ label, value }: FlipDigitProps) {
   const padded = value.toString().padStart(2, "0");
 
   return (
-    <div className="flex w-full flex-col items-center gap-2">
-      <div className="glass-soft relative flex h-16 w-full items-center justify-center overflow-hidden rounded-2xl border border-gold/20 bg-navy-light/50 shadow-floating sm:h-20">
+    <div className="flex flex-col items-center gap-1">
+      <div className="relative flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center overflow-hidden rounded-md border border-gold/30 bg-white shadow-sm">
         <AnimatePresence mode="popLayout">
           <motion.span
             key={padded}
-            initial={{ y: "40%", opacity: 0 }}
-            animate={{ y: "0%", opacity: 1 }}
-            exit={{ y: "-40%", opacity: 0 }}
+            initial={{ y: "100%" }}
+            animate={{ y: "0%" }}
+            exit={{ y: "-100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="absolute inset-0 flex items-center justify-center font-[var(--font-playfair)] text-3xl font-semibold tracking-widest text-gold sm:text-4xl"
+            className="absolute inset-0 flex items-center justify-center font-[var(--font-playfair)] text-sm font-semibold text-navy-dark"
           >
             {padded}
           </motion.span>
         </AnimatePresence>
-        <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-transparent" />
       </div>
-      <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-light-gold/60">
+      <span className="text-[8px] font-medium uppercase tracking-wider text-navy/60">
         {label}
       </span>
     </div>
@@ -43,123 +40,91 @@ export function HeroCountdownSection() {
 
   return (
     <section
-      className="section-pad relative grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center"
+      className="relative flex w-full flex-col items-center justify-start px-4 pt-20 sm:pt-24 pb-10"
       id="hero"
     >
-      <div className="pointer-events-none absolute -right-16 top-10 hidden h-72 w-72 rounded-full bg-gradient-to-br from-navy-light/40 via-navy/10 to-transparent blur-3xl md:block" />
-      <div className="pointer-events-none absolute -left-24 bottom-0 hidden h-72 w-72 rounded-full bg-gradient-to-br from-gold/10 via-navy-light/10 to-transparent blur-3xl md:block" />
+      {/* Background Glows */}
+      <div className="pointer-events-none absolute left-1/2 top-20 -translate-x-1/2 h-64 w-64 rounded-full bg-gold/10 blur-3xl mix-blend-multiply" />
 
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] }}
-        className="relative z-10 flex flex-col gap-6"
+        transition={{ duration: 0.8 }}
+        className="relative z-10 flex flex-col items-center text-center w-full max-w-2xl mx-auto space-y-2 sm:space-y-4"
       >
-        <Badge variant="glow" className="self-start border-gold/30 bg-gold/10 text-gold">
-          Undangan Resmi Buka Bersama
-        </Badge>
-        <div className="space-y-4">
-          <div className="space-y-1 text-xs text-light-gold/80 sm:text-sm">
-            <p>Dengan memohon rahmat dan ridho Allah SWT,</p>
-            <p>
-              serta dalam rangka mempererat tali silaturahmi di bulan suci
-              Ramadhan 1447 H,
-            </p>
-            <p className="mt-3 font-medium text-white">
-              Manajemen dan Keluarga Besar{" "} Ardana Perkasa Group
-            </p>
-            <p>Dengan hormat mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara:</p>
-          </div>
-          <h1 className="font-[var(--font-playfair)] text-3xl leading-tight sm:text-4xl md:text-5xl">
-            <span className="bg-gradient-to-r from-gold via-light-gold to-gold bg-clip-text text-transparent">
-              BUKA BERSAMA
-            </span>
-            <span className="mt-1 block text-sm font-semibold text-white/90 sm:text-xs">
-              Ardana Perkasa Group
-            </span>
-            <span className="mt-1 block text-sm font-semibold text-white/90 sm:text-xs">
-              Dan 
-            </span>
-            <span className="bg-gradient-to-r from-gold via-light-gold to-gold bg-clip-text text-transparent">
-              MILAD
-            </span>
-            <span className="mt-1 block text-sm font-semibold text-white/90 sm:text-xs">
-              PT. Dwi Kusuma Perkasa
-            </span>
-          </h1>
-          <div className="h-px w-28 bg-gradient-to-r from-gold via-gold-dark to-transparent" />
-          <p className="text-balance text-sm text-light-gold/80 sm:text-base">
-            Mempererat kebersamaan insan Ardana Perkasa Group dalam suasana
-            Ramadhan yang hangat, sakral, dan penuh rasa syukur.
-          </p>
+        {/* Top Logo APG */}
+        <div className="relative mb-2 h-24 w-48 sm:h-32 sm:w-64 mix-blend-multiply">
+           <Image
+             src="/logos/apgg.png"
+             alt="Ardana Perkasa Group"
+             fill
+             className="object-contain"
+             style={{ mixBlendMode: 'multiply' }}
+             priority
+           />
         </div>
-        <div className="grid gap-4 text-sm text-light-gold/80 sm:text-base">
-          <div className="glass-panel grid gap-3 rounded-2xl border border-gold/20 bg-navy-light/30 px-6 py-4 text-xs sm:grid-cols-2 sm:text-sm">
-            <div className="flex items-start gap-3">
-              <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-gold/10 text-gold">
-                <CalendarDays className="h-3.5 w-3.5" />
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-gold">
-                  Hari / Tanggal
-                </p>
-                <p className="text-sm text-white">Jumat, 6 Maret 2026</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-gold/10 text-gold">
-                <Clock3 className="h-3.5 w-3.5" />
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-gold">
-                  Waktu
-                </p>
-                <p className="text-sm text-white">17.00 WIB – 20.00 WIB</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-gold/10 text-gold">
-                <MapPin className="h-3.5 w-3.5" />
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-gold">
-                  Tempat
-                </p>
-                <p className="text-sm text-white">
-                  Hotel Gren Alia Cikini, Menteng.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-2 flex flex-wrap items-center gap-4">
-        </div>
-      </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 36 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 0.61, 0.36, 1] }}
-        className="relative z-10"
-      >
-        <div className="glass-panel relative flex flex-col items-center gap-6 rounded-3xl border border-gold/30 bg-navy-light/30 px-6 py-7 shadow-[0_0_55px_rgba(212,175,55,0.15)] sm:px-8 sm:py-9">
-          <div className="flex w-full items-center justify-between text-[10px] font-medium uppercase tracking-[0.28em] text-gold">
-            <span>Countdown</span>
-            <span>Buka Puasa</span>
-          </div>
-          <div className="grid w-full grid-cols-4 gap-2 sm:gap-6">
-            <FlipDigit label="Hari" value={countdown.days} />
-            <FlipDigit label="Jam" value={countdown.hours} />
-            <FlipDigit label="Menit" value={countdown.minutes} />
-            <FlipDigit label="Detik" value={countdown.seconds} />
-          </div>
-          <div className="mt-2 flex w-full items-center justify-between text-[11px] text-light-gold/60">
-            <span>Menuju Buka Bersama</span>
-            <span>WIB • Jakarta</span>
+        {/* UNDANGAN */}
+        <p className="text-xs sm:text-sm font-semibold tracking-[0.4em] text-navy/80 uppercase mb-1">
+          Undangan
+        </p>
+
+        {/* BUKA PUASA */}
+        <h1 className="font-[var(--font-playfair)] text-5xl sm:text-7xl font-bold text-navy-dark tracking-wide leading-none drop-shadow-sm">
+          BUKA PUASA
+        </h1>
+
+        {/* BERSAMA */}
+        <p className="text-xs sm:text-sm font-serif tracking-[0.3em] text-navy/70 uppercase mt-2">
+          Bersama
+        </p>
+
+        {/* ARDANA PERKASA GROUP */}
+        <h3 className="font-[var(--font-playfair)] text-xl sm:text-3xl font-bold text-navy-dark tracking-wide mt-1">
+          ARDANA PERKASA GROUP
+        </h3>
+
+        {/* AMPERSAND */}
+        <div className="text-3xl sm:text-4xl font-serif text-gold/80 my-2">
+          &
+        </div>
+
+        {/* MILAD KE-4 */}
+        <div className="flex flex-col items-center justify-center gap-1">
+          <span className="font-[var(--font-playfair)] text-3xl sm:text-4xl font-bold text-navy-dark uppercase tracking-widest drop-shadow-sm">
+            MILAD KE - 4
+          </span>
+          <span className="text-sm sm:text-base font-semibold text-navy/80 tracking-[0.2em] uppercase mt-1">
+            PT Dwi Kusuma Perkasa
+          </span>
+        </div>
+
+        {/* Intro Text */}
+        <p className="text-xs sm:text-sm text-navy/70 max-w-md mx-auto leading-relaxed mt-6 px-4 italic">
+          &quot;Dengan Rahmat Allah SWT. Kami mengundang Saudara/i untuk hadir dalam acara buka puasa bersama, yang akan diselenggarakan pada:&quot;
+        </p>
+
+        {/* Date/Location Pill */}
+        <div className="mt-8 w-full max-w-md">
+          <div className="relative rounded-3xl border border-navy/10 bg-white/60 backdrop-blur-md px-8 py-5 shadow-lg shadow-navy/5 flex flex-col items-center gap-2 transform transition-transform hover:scale-105 duration-500">
+            <h4 className="font-bold text-navy-dark text-base sm:text-lg">
+              Hotel Gren Alia Kwitang, Jakarta
+            </h4>
+            <div className="h-px w-24 bg-gold/40 my-1" />
+            <p className="text-xs sm:text-sm text-navy/80 font-medium tracking-wide">
+              06 Maret 2026 | 17.00 - 21.00 WIB
+            </p>
           </div>
         </div>
-        <div className="pointer-events-none absolute -left-10 -top-10 h-20 w-20 animate-float rounded-3xl border border-gold/20 bg-gradient-to-br from-gold/10 via-white/5 to-transparent shadow-xl shadow-gold/10" />
-        <div className="pointer-events-none absolute -right-8 bottom-10 h-16 w-16 animate-float rounded-3xl border border-gold/20 bg-gradient-to-br from-gold/10 via-white/5 to-transparent shadow-lg shadow-gold/10" />
+
+        {/* Minimalist Countdown at Bottom */}
+        <div className="mt-10 flex items-center gap-4 opacity-70 scale-90">
+           <FlipDigit label="Hari" value={countdown.days} />
+           <FlipDigit label="Jam" value={countdown.hours} />
+           <FlipDigit label="Menit" value={countdown.minutes} />
+           <FlipDigit label="Detik" value={countdown.seconds} />
+        </div>
+
       </motion.div>
     </section>
   );

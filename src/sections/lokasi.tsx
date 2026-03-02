@@ -16,17 +16,18 @@ export function LokasiSection() {
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.65, ease: [0.22, 0.61, 0.36, 1] }}
       >
-        <Card className="rounded-3xl border border-gold/20 bg-navy-light/50 shadow-floating">
+        <Card className="rounded-3xl border border-gold/20 bg-white/70 shadow-floating">
           <CardHeader className="flex flex-row items-center justify-between">
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
                 Lokasi Acara
               </p>
-              <CardTitle className="font-[var(--font-playfair)] text-white text-2xl">
-                Hotel Gren Alia Cikini
+              <CardTitle className="font-[var(--font-playfair)] text-2xl font-bold leading-tight text-navy-dark sm:text-3xl">
+                Hotel Gren Alia Jakarta
               </CardTitle>
             </div>
             <div className="hidden h-10 w-10 items-center justify-center rounded-2xl bg-gold/10 text-gold shadow-sm md:flex">
@@ -34,11 +35,11 @@ export function LokasiSection() {
             </div>
           </CardHeader>
           <CardContent className="grid gap-5 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.1fr)] md:items-center">
-            <div className="space-y-3 text-sm text-light-gold/80">
+            <div className="space-y-3 text-sm text-navy/80">
               <p>
-                Jl. Cikini Raya No. 46, Jakarta Pusat.
+                Jl. Prajurit KKO Usman dan Harun No.28, Senen, Jakarta Pusat.
               </p>
-              <p className="text-xs text-light-gold/60">
+              <p className="text-xs text-navy/60">
                 Lokasi strategis di pusat kota, mudah diakses dengan transportasi umum maupun kendaraan pribadi.
               </p>
               <Button
@@ -46,7 +47,7 @@ export function LokasiSection() {
                 variant="outline"
                 rounded="full"
                 size="sm"
-                className="mt-2 gap-2 border-gold/40 text-light-gold hover:border-gold hover:bg-gold/10 hover:text-white"
+                className="mt-2 gap-2 border-gold/40 text-navy hover:border-gold hover:bg-gold/10 hover:text-navy-dark"
               >
                 <a
                   href={mapsHref}
@@ -59,13 +60,20 @@ export function LokasiSection() {
                 </a>
               </Button>
             </div>
-            <div className="mt-3 h-[240px] overflow-hidden rounded-2xl border border-gold/20 bg-navy-dark shadow-sm">
+            <div className="mt-3 h-[240px] overflow-hidden rounded-2xl border border-gold/20 bg-white shadow-sm relative group">
               <iframe
-                title="Peta Lokasi Hotel Gren Alia Cikini"
-                src="https://maps.google.com/maps?q=Hotel+Gren+Alia+Cikini&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                title="Peta Lokasi Hotel Gren Alia Jakarta"
+                src="https://maps.google.com/maps?q=Hotel+Gren+Alia+Jakarta&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-full w-full border-0"
+              />
+              <a
+                href={mapsHref}
+                target="_blank"
+                rel="noreferrer"
+                className="absolute inset-0 z-10 bg-transparent"
+                aria-label="Lihat lokasi di Google Maps"
               />
             </div>
           </CardContent>
