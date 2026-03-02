@@ -61,10 +61,10 @@ const subsidiaries = [
     logoSrc: "/logos/lps.png",
   },
       {
-    name: "PT. Caraka Mulia",
+    name: "PT. Caraka Mulia Insurance Broker and Consultants",
     alias: "Caraka",
     icon: HardHat,
-    logoSrc: "/logos/caraka.png",
+    logoSrc: "/logos/crka.png",
   },
 ];
 
