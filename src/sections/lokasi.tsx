@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const mapsHref =
-  "https://www.google.com/maps/search/?api=1&query=Hotel+Gren+Alia+Jakarta";
+  "https://www.google.com/maps/search/?api=1&query=Hotel+Gren+Alia+Jakarta,+Jl.+Prajurit+KKO+Usman+dan+Harun+No.28,+Senen,+Jakarta+Pusat";
 
 export function LokasiSection() {
   return (
