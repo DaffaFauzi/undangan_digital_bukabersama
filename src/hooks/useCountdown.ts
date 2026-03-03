@@ -7,7 +7,7 @@ type Countdown = {
   seconds: number;
 };
 
-const targetDate = new Date("2026-03-06T17:30:00+07:00");
+const targetDate = new Date("2026-03-11T16:30:00+07:00");
 
 export function useCountdown(): Countdown {
   const [value, setValue] = useState<Countdown>({

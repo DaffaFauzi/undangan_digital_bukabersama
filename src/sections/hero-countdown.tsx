@@ -115,7 +115,7 @@ export function HeroCountdownSection() {
             </h4>
             <div className="h-px w-24 bg-gold/40 my-1" />
             <p className="text-xs sm:text-sm text-navy/80 font-medium tracking-wide">
-              06 Maret 2026 | 16.30 - 20.00 WIB
+              11 Maret 2026 | 16.30 - 20.00 WIB
             </p>
           </div>
         </div>

@@ -187,7 +187,7 @@ export function OpeningGate({ onOpened }: Props) {
 
                     <div className="py-3 px-5 sm:py-4 sm:px-6 border border-gold/20 bg-white/60 backdrop-blur-sm rounded-lg mx-auto inline-block">
                         <p className="text-xs sm:text-sm font-medium text-navy-dark">
-                            Jumat, 6 Maret 2026
+                            Rabu, 11 Maret 2026
                         </p>
                         <p className="text-[10px] sm:text-xs text-gold/90 mt-1 uppercase tracking-widest">
                             Ramadan 1447 H

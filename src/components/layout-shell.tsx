@@ -29,7 +29,7 @@ export function LayoutShell({ children }: Props) {
           <div className="hidden flex-col text-xs font-medium uppercase tracking-[0.24em] text-navy-dark sm:flex">
             <span>Ardana Perkasa Group</span>
             <span className="text-[10px] text-navy/60">
-              Buka Bersama 6 Maret 2026
+              Buka Bersama 11 Maret 2026
             </span>
           </div>
         </div>
